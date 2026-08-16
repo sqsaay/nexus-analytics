@@ -1,6 +1,6 @@
-# 🚀 NexusAnalytics - Financial & Crypto Portfolio Intelligence Platform
+# NexusAnalytics - Financial & Crypto Portfolio Intelligence Platform
 
-[![CI/CD Pipeline](https://github.com/username/nexus-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/username/nexus-analytics/actions)
+[![CI/CD Pipeline](https://github.com/sqsaay/nexus-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/sqsaay/nexus-analytics/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org)
@@ -10,38 +10,38 @@
 
 ---
 
-## 🌟 Key Features & Capabilities
+## Key Features & Capabilities
 
-- **🔐 Enterprise Authentication & Authorization**:
+- **Enterprise Authentication & Authorization**:
   - Secure JWT authentication with short-lived access tokens and refresh tokens.
   - Password hashing with `bcryptjs`, Role-Based Access Control (RBAC: `USER` vs `ADMIN`), rate limiting, and security header hardening with `helmet`.
 
-- **💼 Full CRUD Portfolio & Transaction Ledger**:
+- **Full CRUD Portfolio & Transaction Ledger**:
   - Multi-portfolio management (create, update, switch, and delete portfolios).
   - Transaction ledger allowing users to record `BUY`, `SELL`, and `TRANSFER` operations with custom quantities, execution prices, fees, and timestamps.
   - Automated real-time calculations for **Net Valuation**, **Cost Basis**, **Net P&L ($)**, **ROI (%)**, and **Asset Allocation Breakdown (%)**.
 
-- **🤖 Gemini AI Portfolio Risk & Optimization Engine**:
+- **Gemini AI Portfolio Risk & Optimization Engine**:
   - Leverages Google's **Gemini AI API** to analyze user holdings, token concentration, and market risk.
   - Generates a **Health Score (0-100)**, **Risk Rating** (Low / Moderate / High / Aggressive), **Diversification Audit**, and **Actionable Rebalancing Advice**.
   - Built-in heuristic fallback engine ensuring 100% functionality even when an AI API key is not configured.
 
-- **🌐 Third-Party Live Market Data Integration**:
+- **Live Market Data Integration**:
   - Integrated with **CoinGecko REST API** for live crypto market pricing, 24-hour gainers/losers, volume, and 7-day historical OHLC price charts.
   - Server-side in-memory caching mechanism to prevent API rate-limiting and maximize responsiveness.
 
-- **📊 Dynamic Visual Analytics**:
+- **Dynamic Visual Analytics**:
   - Interactive **Recharts** charts including Area valuation curves and Donut asset allocation graphs.
   - Modern Glassmorphic dark UI built with pure CSS and styled component patterns.
 
-- **🐳 DevOps & Containerization**:
+- **DevOps & Containerization**:
   - Single-command orchestration via `docker-compose.yml` for PostgreSQL database, Express API server, and Nginx React frontend.
   - Automated **GitHub Actions CI/CD** pipeline (`.github/workflows/ci.yml`) validating builds, Prisma schemas, and unit tests.
   - Served OpenAPI / Swagger documentation at `/api-docs`.
 
 ---
 
-## 🏗️ System Architecture & Data Flow
+## System Architecture & Data Flow
 
 ```mermaid
 graph TD
@@ -56,7 +56,7 @@ graph TD
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Layer | Technologies Used |
 | :--- | :--- |
@@ -68,38 +68,38 @@ graph TD
 
 ---
 
-## 🔌 API Endpoint Specifications
+## API Endpoint Specifications
 
-### 🔑 Authentication (`/api/auth`)
+### Authentication (`/api/auth`)
 - `POST /api/auth/register` - Create a new user account & default portfolio.
 - `POST /api/auth/login` - Authenticate credentials & return JWT access/refresh tokens.
 - `POST /api/auth/refresh` - Request a new access token using a refresh token.
 - `GET /api/auth/me` - Fetch authenticated user profile details *(Requires Bearer Token)*.
 
-### 💼 Portfolio Management (`/api/portfolios`)
+### Portfolio Management (`/api/portfolios`)
 - `GET /api/portfolios` - Fetch all user portfolios with calculated P&L summaries.
 - `POST /api/portfolios` - Create a new portfolio entity.
 - `GET /api/portfolios/:id` - Fetch single portfolio details & transaction ledger.
 - `PUT /api/portfolios/:id` - Update portfolio metadata.
 - `DELETE /api/portfolios/:id` - Remove portfolio and cascaded transactions.
 
-### 💸 Transactions CRUD (`/api/transactions`)
+### Transactions CRUD (`/api/transactions`)
 - `GET /api/transactions/portfolio/:portfolioId` - Fetch transaction ledger.
 - `POST /api/transactions/portfolio/:portfolioId` - Record a `BUY`, `SELL`, or `TRANSFER` transaction.
 - `DELETE /api/transactions/:id` - Remove a transaction entry.
 
-### 🤖 AI Financial Copilot (`/api/analytics`)
+### AI Financial Copilot (`/api/analytics`)
 - `GET /api/analytics/portfolio/:portfolioId/ai-insights` - Trigger AI portfolio risk & diversification audit.
 
-### 🌐 Market Data (`/api/market`)
+### Market Data (`/api/market`)
 - `GET /api/market/coins` - Fetch top cryptocurrencies with live prices.
 - `GET /api/market/coins/:id/history` - Fetch 7-day historical prices for charting.
 
-> 📚 **Interactive Swagger OpenAPI Documentation** is available when running the server at `http://localhost:5000/api-docs`.
+> **Interactive Swagger OpenAPI Documentation** is available when running the server at `http://localhost:5000/api-docs`.
 
 ---
 
-## ⚡ Quick Start (100% Free & Zero-Setup Local Execution)
+## Quick Start (100% Free & Zero-Setup Local Execution)
 
 ### Prerequisites
 - **Node.js**: `v18.0.0` or higher installed
@@ -107,7 +107,7 @@ graph TD
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/username/nexus-analytics.git
+git clone https://github.com/sqsaay/nexus-analytics.git
 cd nexus-analytics
 
 # Install root, backend, and frontend dependencies in one command
@@ -134,7 +134,7 @@ npm run dev
 
 ---
 
-## 🔑 Pre-Configured Demo Credentials
+## Pre-Configured Demo Credentials
 
 For instant technical evaluation, click **"Launch Instant Demo Account"** on the login page or use:
 
@@ -143,7 +143,7 @@ For instant technical evaluation, click **"Launch Instant Demo Account"** on the
 
 ---
 
-## 🧪 Running Automated Tests
+## Running Automated Tests
 
 Run backend unit and integration tests using Vitest and Supertest:
 ```bash
@@ -152,7 +152,7 @@ npm run test
 
 ---
 
-## 🐳 Docker Deployment
+## Docker Deployment
 
 Run the complete containerized stack (PostgreSQL + Node Backend + React Nginx Frontend) with a single command:
 ```bash
@@ -161,7 +161,7 @@ docker-compose up --build -d
 
 ---
 
-## 🌐 Free Cloud Deployment (GitHub Pages + Render)
+## Free Cloud Deployment (GitHub Pages + Render)
 
 ### 1. Host Backend on Render ($0 Free Web Service)
 1. Push your repository to GitHub.
@@ -188,5 +188,5 @@ docker-compose up --build -d
 
 ---
 
-## 📄 License
+## License
 Distributed under the **MIT License**. See `LICENSE` for details.
