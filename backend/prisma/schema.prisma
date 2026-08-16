@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String      @id @default(uuid())
+  email        String      @unique
+  passwordHash String
+  name         String
+  role         String      @default("USER") // USER or ADMIN
+  portfolios   Portfolio[]
+  watchlists   Watchlist[]
+  auditLogs    AuditLog[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Portfolio {
+  id           String        @id @default(uuid())
+  userId       String
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  description  String?
+  currency     String        @default("USD")
+  isDefault    Boolean       @default(false)
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Transaction {
+  id              String   @id @default(uuid())
+  portfolioId     String
+  portfolio       Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  coinId          String   // e.g., "bitcoin", "ethereum"
+  coinSymbol      String   // e.g., "BTC", "ETH"
+  coinName        String   // e.g., "Bitcoin", "Ethereum"
+  type            String   @default("BUY") // BUY, SELL, or TRANSFER
+  amount          Float
+  pricePerUnit    Float
+  totalSpent      Float
+  fee             Float    @default(0.0)
+  notes           String?
+  transactionDate DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Watchlist {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  coinId      String   // e.g., "bitcoin"
+  coinSymbol  String   // e.g., "BTC"
+  coinName    String   // e.g., "Bitcoin"
+  targetPrice Float?
+  notes       String?
+  createdAt   DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  ipAddress String?
+  userAgent String?
+  details   String?
+  createdAt DateTime @default(now())
+}
