@@ -98,7 +98,7 @@ export const Login: React.FC = () => {
               <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none" />
               <input
                 type="password"
-                placeholder="••••••••"
+                placeholder="********"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="glass-input w-full pl-10"

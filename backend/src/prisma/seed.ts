@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Starting NexusAnalytics Database Seeding...');
+  console.log('Starting NexusAnalytics Database Seeding...');
 
   // Clean existing tables
   await prisma.transaction.deleteMany();
@@ -25,7 +25,7 @@ async function main() {
     },
   });
 
-  console.log(`✅ Created Demo User: ${user.email} (Password: Password123!)`);
+  console.log(`Created Demo User: ${user.email} (Password: Password123!)`);
 
   // 2. Create Demo Portfolio
   const portfolio = await prisma.portfolio.create({
@@ -38,7 +38,7 @@ async function main() {
     },
   });
 
-  console.log(`✅ Created Portfolio: ${portfolio.name}`);
+  console.log(`Created Portfolio: ${portfolio.name}`);
 
   // 3. Create Demo Transactions
   const now = new Date();
@@ -101,7 +101,7 @@ async function main() {
     ],
   });
 
-  console.log('✅ Created 4 Demo Transactions');
+  console.log('Created 4 Demo Transactions');
 
   // 4. Create Watchlist Items
   await prisma.watchlist.createMany({
@@ -125,13 +125,13 @@ async function main() {
     ],
   });
 
-  console.log('✅ Created Watchlist Items');
-  console.log('🎉 Seeding Complete!');
+  console.log('Created Watchlist Items');
+  console.log('Seeding Complete!');
 }
 
 main()
   .catch((e) => {
-    console.error('❌ Seeding failed:', e);
+    console.error('Seeding failed:', e);
     process.exit(1);
   })
   .finally(async () => {
